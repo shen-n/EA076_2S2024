@@ -23,15 +23,6 @@ Potenciais usuários:
 
 As coordenadas fornecidas ao dispositivo eram conforme o Sistema Horizontal, ou seja, são indicados os valores de Azimute e Altitude de cada corpo celeste. Mais detalhes sobre sistemas de coordenadas são fornecidos no **Apêndice A**, que será utilizado como base para a seção de discussão posteriormente.
 
-
-
-
-
-
-
-
-No projeto anterior (Projeto 02), já foi implementado um braço mecânico controlável pela BitDogLab (BitARM), sendo que este projeto visará a integração do braço com o sistema de posicionamento necessário, além da fabricação de uma PCB para integração de todos os periféricos com a BitDogLab.
-
 |Materiais (colocar link no nome de cada um) | Qtde. | Descrição |
 |--|--|--|
 |  |   | |
