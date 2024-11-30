@@ -19,11 +19,15 @@ Potenciais usuários:
 
 ## Metodologia
 
+O desenvolvimento deste projeto envolveu quatro frentes: (a) estudo teórico sobre localização de corpos celestes (resumido no sistemas de coordenadas escolhido); (b) escolha de materiais; (c) desenvolvimento e fabricação de uma estrutura mecânica; (d) desenvolvimento e fabricação de uma PCB; (e) desenvolvimento do programa. 
+
 ### Sistemas de coordenadas
 
 As coordenadas fornecidas ao dispositivo eram conforme o Sistema Horizontal, ou seja, são indicados os valores de Azimute e Altitude de cada corpo celeste. Mais detalhes sobre sistemas de coordenadas são fornecidos no **Apêndice A**, que será utilizado como base para a seção de discussão posteriormente.
 
 ### Materiais Utilizados
+
+Os materiais escolhidos e utilizados são descritos na tabela a seguir. Se desejado, pode-se clicar no nome do material para ser redirecionado para o site de um fornecedor.
 
 |Materiais | Qtde. | Descrição |
 |--|--|--|
@@ -40,6 +44,9 @@ As coordenadas fornecidas ao dispositivo eram conforme o Sistema Horizontal, ou 
 | [Conector IDC Box 14 pinos macho](https://pt.aliexpress.com/item/1005006804603387.html?spm=a2g0o.productlist.main.13.2c401d35aEuDLu&algo_pvid=dce204da-6e38-47c0-a5cd-3767e274d56a&algo_exp_id=dce204da-6e38-47c0-a5cd-3767e274d56a-6&pdp_npi=4%40dis%21BRL%2124.45%217.83%21%21%2127.78%218.89%21%402101ef7017330015717997979e2204%2112000038361940664%21sea%21BR%21820637743%21X&curPageLogUid=l8cuuroPD1VO&utparam-url=scene%3Asearch%7Cquery_from%3A) | 1 | Utilizado na PCB criada para conexão com a BitDogLab. |
 | [Cabo flat com conector IDC Box 14 pinos](https://pt.aliexpress.com/item/1005003161799870.html?spm=a2g0o.productlist.main.5.794a6cb4IXeVPj&algo_pvid=c761506e-c609-41e1-ae3f-59f78ccbfad8&algo_exp_id=c761506e-c609-41e1-ae3f-59f78ccbfad8-2&pdp_npi=4%40dis%21BRL%2128.06%218.16%21%21%214.40%211.28%21%402103237317330016535638644e31ea%2112000024427578485%21sea%21BR%21820637743%21X&curPageLogUid=HS1RQDKcrUE4&utparam-url=scene%3Asearch%7Cquery_from%3A) | 1 | Para conexão entre a BitDogLab e a PCB desenvolvida. |
 
+### Estrutura Mecânica
+
+
 ### Fluxograma
 
 ## Descrição Estrutural
@@ -50,6 +57,7 @@ As coordenadas fornecidas ao dispositivo eram conforme o Sistema Horizontal, ou 
 <table><thead><tr><th></th><th>Pino</th><th>GPIO</th><th>Conector BitDogLab</th></tr></thead><tbody><tr><td rowspan="5">Driver 1 (motor Altitude)</td><td>M0</td><td>19</td><td rowspan="10">IDC box 14 pinos</td></tr><tr><td>M1</td><td>20</td></tr><tr><td>M2</td><td>18</td></tr><tr><td>DIR</td><td>4</td></tr><tr><td>STEP</td><td>28</td></tr><tr><td rowspan="5">Driver 2 (motor Azimute)</td><td>M0</td><td>19</td></tr><tr><td>M1</td><td>20</td></tr><tr><td>M2</td><td>18</td></tr><tr><td>DIR</td><td>17</td></tr><tr><td>STEP</td><td>16</td></tr><tr><td>Laser</td><td>-</td><td>2 (SDL)</td><td>I2C1</td></tr><tr><td rowspan="4">Módulo Bluetooth HC-05</td><td>RX</td><td>0 (SDA)</td><td rowspan="4">I2C0</td></tr><tr><td>TX</td><td>1 (SCL)</td></tr><tr><td>VCC</td><td>3V3</td></tr><tr><td>GND</td><td>GND</td></tr></tbody></table>
 
 ![Alt text](images/diagrama.png)
+
 
 ## Resultados
 
