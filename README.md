@@ -7,7 +7,7 @@ Este trabalho trata-se do projeto final da disciplina *EA076 (Laboratório de Si
 | Felipe Hiroshi Kano Inazumi | 215696  | Eng. Elétrica|
 | Nathan Shen Baldon  | 242448 | Eng. Elétrica|
 
-**Table of Contents**
+Foi também desenvolvido um **MANUAL DE USO**, que pode ser encontrado [aqui](https://github.com/shen-n/EA076_2S2024/blob/main/manual_de_uso.md). 
 
 ## Descrição do Projeto
 
