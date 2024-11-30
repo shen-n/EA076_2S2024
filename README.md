@@ -37,6 +37,8 @@ As coordenadas fornecidas ao dispositivo eram conforme o Sistema Horizontal, ou 
 ### Conexões com BitDogLab
 <table><thead><tr><th></th><th>Pino</th><th>GPIO</th><th>Conector BitDogLab</th></tr></thead><tbody><tr><td rowspan="5">Driver 1 (motor Altitude)</td><td>M0</td><td>19</td><td rowspan="10">IDC box 14 pinos</td></tr><tr><td>M1</td><td>20</td></tr><tr><td>M2</td><td>18</td></tr><tr><td>DIR</td><td>4</td></tr><tr><td>STEP</td><td>28</td></tr><tr><td rowspan="5">Driver 2 (motor Azimute)</td><td>M0</td><td>19</td></tr><tr><td>M1</td><td>20</td></tr><tr><td>M2</td><td>18</td></tr><tr><td>DIR</td><td>17</td></tr><tr><td>STEP</td><td>16</td></tr><tr><td>Laser</td><td>-</td><td>2 (SDL)</td><td>I2C1</td></tr><tr><td rowspan="4">Módulo Bluetooth HC-05</td><td>RX</td><td>0 (SDA)</td><td rowspan="4">I2C0</td></tr><tr><td>TX</td><td>1 (SCL)</td></tr><tr><td>VCC</td><td>3V3</td></tr><tr><td>GND</td><td>GND</td></tr></tbody></table>
 
+![Alt text](images/diagrama.png)
+
 
 ## Resultados
 
