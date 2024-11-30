@@ -1,4 +1,4 @@
-#`Manual de Uso - ObservaCÃO`
+# `Manual de Uso - ObservaCÃO`
 
 
 Tenha em mãos: observaCÃO, bússola, celular com bluetooth, base de dados de corpos celestes.
