@@ -58,11 +58,20 @@ O programa utilizado neste projeto foi desenvolvido na linguagem de programaçã
 - ssd1306
 - framebuf
 - time
+
 O programa inicia com uma função de calibração controlada via Joystick da BitDogLab, de tal forma que, o usuário deverá utilizar movimentos do joystick para cima/baixo ou para a esquerda/direita para controlar os motores superiores e inferiores de tal forma a alinhar o laser na posição horizontal e na direção do polo norte.
 Cada comando direcional do Joystick envia o comando de 1 passo para o respectivo motor (superior ou inferior). Quando o usuário pressiona o botão central do Joystick, um delay é adicionado entre cada comando de 1 passo para o motor, resultando em um movimento mais sensível e permitindo assim uma calibração fina dos motores. Esse pressionar do botão do Joystick alterna entre os modos de calibração fina e mais rápida. Para confirmar a calibração estabelecida, o usuário deve pressionar o botão B para avançar para a próxima etapa do programa. Neste momento, o programa entende que a posição atual dos motores é a referência (0,0)
 Em seguida, o programa aguarda o envio das coordenadas, via módulo bluetooth, do astro a ser apontado. As coordenadas devem ser enviadas no formato:
-$$ Azimuth,Altitude $$
+
+````
+```
+Azimuth,Altitude 
+```
+````
+
 Note que estas coordenadas podem ser do tipo float com precisão de 2 casas decimais, e não deve haver espaço entre virgulas.
+
+
 
 - **Fluxograma:**
 
