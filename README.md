@@ -52,26 +52,33 @@ Para integrar os motores e o laser, foi desenvolvida uma estrutura mecânica, co
 ### Desenvolvimento do programa 
 
 O programa utilizado neste projeto foi desenvolvido na linguagem de programação micropython e utiliza as seguintes bibliotecas:
-- machine
-- time
-- sys
-- ssd1306
-- framebuf
-- time
+- Machine
+- Time
+- Sys
+- Ssd1306
+- Framebuf
+A comunicação com o módulo bluethooh foi feita via protocolo UART, e mais especificamente foi utilizada a UART0 da Raspiberry neste projeto. 
 
 O programa inicia com uma função de calibração controlada via Joystick da BitDogLab, de tal forma que, o usuário deverá utilizar movimentos do joystick para cima/baixo ou para a esquerda/direita para controlar os motores superiores e inferiores de tal forma a alinhar o laser na posição horizontal e na direção do polo norte.
-Cada comando direcional do Joystick envia o comando de 1 passo para o respectivo motor (superior ou inferior). Quando o usuário pressiona o botão central do Joystick, um delay é adicionado entre cada comando de 1 passo para o motor, resultando em um movimento mais sensível e permitindo assim uma calibração fina dos motores. Esse pressionar do botão do Joystick alterna entre os modos de calibração fina e mais rápida. Para confirmar a calibração estabelecida, o usuário deve pressionar o botão B para avançar para a próxima etapa do programa. Neste momento, o programa entende que a posição atual dos motores é a referência (0,0)
+
+Cada comando direcional do Joystick envia o comando de 1 passo para o respectivo motor (superior ou inferior). Quando o usuário pressiona o botão central do Joystick, um delay é adicionado entre cada comando de 1 passo para o motor, resultando em um movimento mais sensível e permitindo assim uma calibração fina dos motores. Esse pressionar do botão do Joystick alterna entre os modos de calibração fina e mais rápida. Para confirmar a calibração estabelecida, o usuário deve pressionar o botão B para avançar para a próxima etapa do programa. Neste momento, o programa entende que a posição atual dos motores é a referência (0,0).
+
 Em seguida, o programa aguarda o envio das coordenadas, via módulo bluetooth, do astro a ser apontado. As coordenadas devem ser enviadas no formato:
 
 ````
-```
 Azimuth,Altitude 
-```
 ````
 
-Note que estas coordenadas podem ser do tipo float com precisão de 2 casas decimais, e não deve haver espaço entre virgulas.
+Note que estas coordenadas podem ser do tipo float com precisão de 2 casas decimais, e não deve haver espaço entre virgulas. Ambos as coordenadas podem ser valores negativos e caso o valor azimutal seja maior que 180°, o programa converte este valor de ângulo positivo para o respectivo ângulo negativo para evitar que o motor inferior rotacione mais do que o necessário.
+
+Por fim, o programa calcula o número de passos necessários para cada motor para rotacionar a estrutura no ângulo informado pelo usuário.
+
+Entre cada envio das coordenadas, o usuário também pode pressionar o Botão A ou Botão B da BitDogLab e uma das situações a seguir deve ocorrer:
+- Botão A: Alterna o estado do Laser para Ligado/Desligado
+- Botão B: O programa entra no modo de calibração conforme mencionado anteriormente, sendo necessário pressionar novamente o botão B para concluir a calibração. 
 
 
+Abaixo é apresentado um fluxograma do programa descrito
 
 - **Fluxograma:**
 
