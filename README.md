@@ -1,4 +1,4 @@
-# `ObservaCÃO - um ajudante para observação do céu noturno`
+# `ObservaCÃO - um ajudante para observação do céu noturno` ([Manual de Uso aqui](https://github.com/shen-n/EA076_2S2024/blob/main/manual_de_uso.md))
 
 Este trabalho trata-se do projeto final da disciplina *EA076 (Laboratório de Sistemas Embarcados)*, ministrada pelo Prof. Dr. Fabiano Fruett no segundo semestre de 2024. Ele foi baseado no trabalho "[_Star Track - Arduino Powered Star Pointer and Tracker_](https://www.instructables.com/Star-Track-Arduino-Powered-Star-Pointer-and-Tracke/)", de Görkem, sendo adaptado para operar com a placa BitDogLab.
 
@@ -6,8 +6,6 @@ Este trabalho trata-se do projeto final da disciplina *EA076 (Laboratório de Si
 |--|--|--|
 | Felipe Hiroshi Kano Inazumi | 215696  | Eng. Elétrica|
 | Nathan Shen Baldon  | 242448 | Eng. Elétrica|
-
-Foi também desenvolvido um **MANUAL DE USO**, que pode ser encontrado [aqui](https://github.com/shen-n/EA076_2S2024/blob/main/manual_de_uso.md). 
 
 ## Descrição do Projeto
 
@@ -23,7 +21,7 @@ O desenvolvimento deste projeto envolveu quatro frentes: (a) estudo teórico sob
 
 ### Sistemas de coordenadas
 
-As coordenadas fornecidas ao dispositivo eram conforme o Sistema Horizontal, ou seja, são indicados os valores de Azimute e Altitude de cada corpo celeste. Mais detalhes sobre sistemas de coordenadas são fornecidos no **Apêndice A**, que será utilizado como base para a seção de discussão posteriormente.
+Optou-se por utilizar coordenadas do Sistema Horizontal neste projeto, ou seja, são usados os valores de Azimute e Altitude para localização de cada corpo celeste. O seguinte _site_ foi usado para determinação das coordenadas: [base de dados de corpos celestes](https://www.timeanddate.com/astronomy/night/). Mais detalhes sobre sistemas de coordenadas são fornecidos no **Apêndice A**, que será utilizado como base para a seção de discussão posteriormente.
 
 ### Materiais Utilizados
 
@@ -46,22 +44,50 @@ Os materiais escolhidos e utilizados são descritos na tabela a seguir. Se desej
 
 ### Estrutura Mecânica
 
+Para integrar os motores e o laser, foi desenvolvida uma estrutura mecânica, composta de quatro partes. Elas foram desenvolvidas no _software_ AutoCad Inventor e estão na pasta [3d_models](https://github.com/shen-n/EA076_2S2024/tree/main/3d_models). As peças foram fabricadas em uma impressora 3D, utilizando filamento PLA na cor branca. A montagem foi feita conforme o arquivo [assembly.stl](https://github.com/shen-n/EA076_2S2024/blob/main/3d_models/assembly.stl). O motor da base é utilizado para determinar a coordenada Azimute e, o motor superior, para a coordenada Altitude. Assim, ao longo da documentação, são muitas vezes chamados de motores de passo Azimute e Altitude. 
 
-### Fluxograma
+### Desenvolvimento da PCB
+
+
+### Desenvolvimento do programa 
+
+- **Fluxograma:** 
 
 ## Descrição Estrutural
 
+Para que se compreenda a conexão entre os diferentes componentes, foi criada a tabela abaixo, que apresenta qual GPIO da BitDogLab foi atribuída a cada pino de cada periférico. Além disso, na coluna mais à direita, é apresentado em qual conector cada GPIO se situa.
 
+Obs: note que os pinos de ajuste de micropasso dos dois _drivers_ (M0, M1 e M2) estão conectados entre si, não sendo possível configurá-los de forma independente.
 
 ### Conexões com BitDogLab
 <table><thead><tr><th></th><th>Pino</th><th>GPIO</th><th>Conector BitDogLab</th></tr></thead><tbody><tr><td rowspan="5">Driver 1 (motor Altitude)</td><td>M0</td><td>19</td><td rowspan="10">IDC box 14 pinos</td></tr><tr><td>M1</td><td>20</td></tr><tr><td>M2</td><td>18</td></tr><tr><td>DIR</td><td>4</td></tr><tr><td>STEP</td><td>28</td></tr><tr><td rowspan="5">Driver 2 (motor Azimute)</td><td>M0</td><td>19</td></tr><tr><td>M1</td><td>20</td></tr><tr><td>M2</td><td>18</td></tr><tr><td>DIR</td><td>17</td></tr><tr><td>STEP</td><td>16</td></tr><tr><td>Laser</td><td>-</td><td>2 (SDL)</td><td>I2C1</td></tr><tr><td rowspan="4">Módulo Bluetooth HC-05</td><td>RX</td><td>0 (SDA)</td><td rowspan="4">I2C0</td></tr><tr><td>TX</td><td>1 (SCL)</td></tr><tr><td>VCC</td><td>3V3</td></tr><tr><td>GND</td><td>GND</td></tr></tbody></table>
 
-![Alt text](images/diagrama.png)
+Também, para facilitar a montagem, a figura abaixo mostra quais conexões devem ser feitas entre a BitDogLab e todos os periféricos.
 
+![diagrama](images/diagrama.png)
 
 ## Resultados
 
+A figura abaixo apresenta o resultado da montagem da estrutura mecânica. Como pode se constatar, ficou exatamente conforme o modelo 3D projetado.
+
+![estrutura_real](images/estrutura_real.jpg)
+
+A montagem da PCB também foi um sucesso, sendo apresentada abaixo.
+
+![pcb_real](images/pcb_real.jpg)
+
+Em relação ao funcionamento do dispositivo para observação do céu, não foi possível visualizar o _laser_ durante a noite (muito fraco), sendo que não foi possível analisar sua precisão. No entanto, foram utilizados aplicativos de celular que localizam corpos celestes (e.g. [Star Walk 2](https://play.google.com/store/apps/details?id=com.vitotechnology.StarWalk2Free&hl=pt_BR)) e, em testes, o sistema ObservaCÃO apontou aproximadamente para a mesma direção indicada pelos aplicativos, mostrando potencial. No entanto, havia sempre algum erro entre o celular e o dispositivo, principalmente pela calibração falha em **ambos** os dispositivos, o que será discutido na próxima seção.  
+
 ## Desafios e Conclusão
+
+Ao longo do desenvolvimento do projeto, houve apenas desafios pequenos. Primeiramente, pode-se citar o mau funcionamento das GPIOs 8 e 9 (UART1), que seriam usadas com o módulo bluetooth HC-05. Em nenhum momento, foi possível ler ou escrever dados com estes pinos, mesmo realizando a atribuição explícita deles para UART1 no programa. Assim, foi necessário utilizar a UART0 (GPIOs 0 e 1), a qual funcionou e, no tempo do projeto, não foi possível identificar o problema com a UART1. Vale comentar também que o módulo bluetooth apresentou inconsistências, ora lendo e escrevendo corretamente, ora não.
+
+Outro problema encontrado ao longo do desenvolvimento do projeto foram falhas em fios/cabos: um deles foi um _jumper_ de _protoboard_, o qual estava rompido internamente; outro foi com a crimpagem do cabo flat utilizado, que apresentou falhas de continuidade e precisou ser ajustado.
+
+Por fim, o desafio mais relevante foi aquele relacionado com erros na indicação de corpos celestes. Uma das grandes fontes de erro foi a calibração do celular, que estava sendo usado como referência de bússola e como referência da localização dos corpos celestes. Note que, neste caso, qualquer erro nesta referência causa erros no dispositivo ObservaCÃO e a própria indicação dos astros dada pelo celular pode estar também equivocada. Para corrigir isso,  
+
+
+Melhorias futuras: aumentar estabilidade da estrutura mecânica, adicionar peça para acoplamento em tripé, adicionar controle dos pinos Enable dos drivers (para economizar bateria), adicionar 
 
 ## Referências
 
@@ -77,10 +103,24 @@ Assim, para localizar os corpos celestes, será utilizada uma base de dados que 
 - Referência para DEC: uma alternativa é encontrar o Polo Norte Celeste, que pode ser encontrado através da Estrela Polar (Polaris) [1,4,5]. Assim, seria necessário apontar para esta Estrela manualmente, indicando para o sistema sua posição.
 - Referência para RA: será utilizado o tempo sideral, que também tem como referência o ponto vernal (referência de RA). O tempo sideral pode ser calculado com o horário local. [1]
 
+## Apêndice B - driver DRV8825
 
+O driver DRV8825 possui duas pontes H e é projetado para controle de motores de passo bipolares. O controle é feito com a interface STEP/DIR, entradas que indicam quantos passos devem ser dados (definido pelo número de pulsos em STEP) e em qual direção (definido pelo nível lógico em DIR) (figura abaixo). 
 
+![drv8825](images/drv8825.png)
+Retirado de: [fonte](https://www.marinostore.com/automacao/driver-motor-de-passo-drv8825)
 
+Para controle do tamanho do passo (microstep), é necessário introduzir uma combinação de valores binários nas entradas M0, M1 e M2, conforme apresentado na tabela abaixo. O driver possui uma resistência de pulldown interna, de tal forma que, se a entrada estiver desconectada o nível de tensão neste terminal está em 0V (GND).
 
+<table><thead><tr><th>M2</th><th>M1</th><th>M0</th><th>Tamanho do Passo</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>Passo completo</td></tr><tr><td>0</td><td>0</td><td>1</td><td>1/2 Passo</td></tr><tr><td>0</td><td>1</td><td>0</td><td>1/4 Passo</td></tr><tr><td>0</td><td>1</td><td>1</td><td>1/8 Passo</td></tr><tr><td>1</td><td>0</td><td>0</td><td>1/16 Passo</td></tr><tr><td>1</td><td>0</td><td>1</td><td rowspan="3"><br><br>1/32 Passo</td></tr><tr><td>1</td><td>1</td><td>0</td></tr><tr><td>1</td><td>1</td><td>1</td></tr></tbody></table>
 
+Outra etapa necessária para o funcionamento do driver DRV8825 foi a calibração da corrente de saída do driver. Esta calibração é feita alterando a posição do potenciômetro disponível no próprio driver, e fazendo a medição do valor de tensão entre este ponto e o GND. 
 
+![drv8825_pot](images/drv8825_pot.png)
+
+Com este valor de tensão, a corrente de saída do driver é calculada pela seguinte equação:
+
+$$I_{OUT}= \dfrac{V_{Ref}}{Av \cdot R_{sense}}$$
+
+Onde Vref é o valor da tensão medida no potênciometro, Av = 5 para este driver e o Rsense pode ser encontrado no driver conforme apresentado na Figura 2 acima.
 
