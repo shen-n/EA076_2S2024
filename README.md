@@ -48,6 +48,18 @@ Para integrar os motores e o laser, foi desenvolvida uma estrutura mecânica, co
 
 ### Desenvolvimento da PCB
 
+O desenvolvimento da PCB foi feito com o auxílio do software KiCad 8.0, os arquivos de fabricação, esquemático e layout estão compactados e podem ser encontrados na pasta [PCB](https://github.com/shen-n/EA076_2S2024/tree/main/PCB).
+
+O esquemático da placa contém um conector Box IDC de 14 pinos, necessários para realizar a comunicação das GPIOs da BitDogLab com os drives DRV8825 na PCB. Além disso, a placa possui 1 conector de dois terminais para fazer a ligação do laser e do lado destes conectores estão dispostos dois conectores I2C nos quais devem ser conectados os motores de passo superior e inferior. Para mais detalhes da PCB e o esquema de ligação veja o capítulo [here](#Descrição Estrutural)
+
+
+O circuito para acionamento do Laser foi desenvolvido com um chaveamento simples controlado por transistor conforme apresentado na figura abaixo. Para controlar o chaveamento deste transistor é necessário fazer a conexão do IDC0 no conector J7 da placa.
+
+![Laser](images/laser.png)
+
+Além disso, a placa também conta com um header J9 de 6 pinos que permite acesso aos GPIOS 08 e 09 além do VCC e GND. 
+
+
 
 ### Desenvolvimento do programa 
 
