@@ -90,6 +90,20 @@ Assim, encerra-se indicando possíveis melhorias futuras: (a) melhorar estabilid
 
 ## Referências
 
+[1] GörkemPortfolio, “Star Track - Arduino Powered Star Pointer and Tracker,” Instructables. https://www.instructables.com/Star-Track-Arduino-Powered-Star-Pointer-and-Tracke/
+
+[2] “Coordinate Systems Comparison,” Unl.edu, 2024. https://astro.unl.edu/classaction/animations/coordsmotion/celhorcomp.html (accessed Nov. 29, 2024).
+
+[3] “Galileo’s Finger - an Open Source Astronomy Learning Tool,” Instructables, Mar. 30, 2015. https://www.instructables.com/Galileos-Finger-An-Open-Source-Astronomy-Learning-/ (accessed Nov. 29, 2024).
+
+[4] P. Dyches, “What is the North Star and How Do You Find It? - NASA Science,” science.nasa.gov, Jul. 28, 2021. https://science.nasa.gov/solar-system/skywatching/what-is-the-north-star-and-how-do-you-find-it/
+
+[5] “The North Star: Polaris,” Space.com, May 16, 2017. https://www.space.com/15567-north-star-polaris.html
+
+[6] “Horizontal and equatorial coordinate systems,” Astronomy Stack Exchange, Dec. 31, 2021. https://astronomy.stackexchange.com/questions/48004/horizontal- (accessed Nov. 29, 2024).
+
+[7] “Sistema horizontal de coordenadas,” Wikipedia.org, Jul. 2007. https://pt.wikipedia.org/wiki/Sistema_horizontal_de_coordenadas (accessed Nov. 29, 2024).
+
 ## Apêndice A - sistemas de coordenadas
 
 Para localizar corpos celestes, é muito comum que se utilize o sistema de coordenadas celeste. Nele, usa-se o conceito de Esfera Celeste: uma projeção de todo o céu em uma esfera de raio indeterminado e concêntrica à Terra (como se o céu que vemos fosse uma casca esférica ao redor da Terra). A localização dos corpos se dá através de coordenadas esféricas, as quais dependem do plano fundamental escolhido (plano que divide Esfera Celeste em dois hemisférios) [1]. O Sistema Horizontal, por exemplo, é geralmente mais conhecido (com Azimute/Altitude como coordenadas) e utiliza o horizonte local do observador como plano fundamental [1,7]. O problema é que, como a referência (plano fundamental) depende da posição do observador na Terra, a posição do corpo celeste a ser apontado, por consequência, também depende. Assim, para eliminar essa dependência, é comum que se utilize o Sistema Equatorial, que toma como plano fundamental o Equador Celeste (projeção da Linha do Equador na Esfera Celeste) [1,6]. O Polo Norte e Polo Sul também são projetados na Esfera Celeste, sendo denominados Polo Sul Celeste e Polo Norte Celeste.
