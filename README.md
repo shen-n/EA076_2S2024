@@ -92,19 +92,19 @@ Assim, encerra-se indicando possíveis melhorias futuras: (a) melhorar estabilid
 
 [1] GörkemPortfolio, “Star Track - Arduino Powered Star Pointer and Tracker,” Instructables. https://www.instructables.com/Star-Track-Arduino-Powered-Star-Pointer-and-Tracke/
 
-[2] “Coordinate Systems Comparison,” Unl.edu, 2024. https://astro.unl.edu/classaction/animations/coordsmotion/celhorcomp.html (accessed Nov. 29, 2024).
+[2] “Coordinate Systems Comparison,” Unl.edu, 2024. https://astro.unl.edu/classaction/animations/coordsmotion/celhorcomp.html.
 
-[3] “Galileo’s Finger - an Open Source Astronomy Learning Tool,” Instructables, Mar. 30, 2015. https://www.instructables.com/Galileos-Finger-An-Open-Source-Astronomy-Learning-/ (accessed Nov. 29, 2024).
+[3] “Galileo’s Finger - an Open Source Astronomy Learning Tool,” Instructables, Mar. 30, 2015. https://www.instructables.com/Galileos-Finger-An-Open-Source-Astronomy-Learning-/.
 
 [4] P. Dyches, “What is the North Star and How Do You Find It? - NASA Science,” science.nasa.gov, Jul. 28, 2021. https://science.nasa.gov/solar-system/skywatching/what-is-the-north-star-and-how-do-you-find-it/
 
 [5] “The North Star: Polaris,” Space.com, May 16, 2017. https://www.space.com/15567-north-star-polaris.html
 
-[6] “Horizontal and equatorial coordinate systems,” Astronomy Stack Exchange, Dec. 31, 2021. https://astronomy.stackexchange.com/questions/48004/horizontal- (accessed Nov. 29, 2024).
+[6] “Horizontal and equatorial coordinate systems,” Astronomy Stack Exchange, Dec. 31, 2021. https://astronomy.stackexchange.com/questions/48004/horizontal-.
 
-[7] “Sistema horizontal de coordenadas,” Wikipedia.org, Jul. 2007. https://pt.wikipedia.org/wiki/Sistema_horizontal_de_coordenadas (accessed Nov. 29, 2024).
+[7] “Sistema horizontal de coordenadas,” Wikipedia.org, Jul. 2007. https://pt.wikipedia.org/wiki/Sistema_horizontal_de_coordenadas.
 
-[8] “The Internet Stellar Database,” www.stellar-database.com. http://www.stellar-database.com/
+[8] “The Internet Stellar Database,”. http://www.stellar-database.com/
 
 ## Apêndice A - sistemas de coordenadas
 
