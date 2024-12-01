@@ -73,19 +73,22 @@ Note que estas coordenadas podem ser do tipo float com precisão de 2 casas deci
 
 Por fim, o programa calcula o número de micropassos necessários para cada motor de tal forma que, o motor finalize o movimento no ângulo enviado pelo usuário.
 
-Alguns exemplos de comandos enviados:
+Alguns exemplos de comandos enviados na sequência:
 ````
 45,45
 ````
 O motor inferior irá girar 45° para Leste e o motor superior irá rotacionar 45° para cima, resultando em Azimuth: 45°, Altitude: 45°
+
 ````
 90,90
 ````
 O motor inferior irá girar 45° novamente para Leste e o motor superior irá rotacionar novamente 45° para cima, resultando em Azimuth: 90°, Altitude: 90°
+
 ````
 0,0
 ````
 O motor inferior irá girar -90° para Leste (equivalente à 90° para oeste) e o motor superior irá rotacionar -90° para cima (equivalente à 90° para baixo), resultando em Azimuth: 0°, Altitude: 0° (origem)
+
 ````
 270,0
 ````
