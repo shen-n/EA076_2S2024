@@ -69,14 +69,31 @@ Em seguida, o programa aguarda o envio das coordenadas, via módulo bluetooth, d
 Azimuth,Altitude 
 ````
 
-Note que estas coordenadas podem ser do tipo float com precisão de 2 casas decimais, e não deve haver espaço entre virgulas. Ambos as coordenadas podem ser valores negativos e caso o valor azimutal seja maior que 180°, o programa converte este valor de ângulo positivo para o respectivo ângulo negativo para evitar que o motor inferior rotacione mais do que o necessário.
+Note que estas coordenadas podem ser do tipo float com precisão de 2 casas decimais, e não deve haver espaço entre a virgula. Ambos as coordenadas podem ser valores negativos e caso o valor azimutal seja maior que 180°, o programa converte este valor de ângulo positivo para o respectivo ângulo negativo para evitar que o motor inferior rotacione mais do que o necessário.
 
-Por fim, o programa calcula o número de passos necessários para cada motor para rotacionar a estrutura no ângulo informado pelo usuário.
+Por fim, o programa calcula o número de micropassos necessários para cada motor de tal forma que, o motor finalize o movimento no ângulo enviado pelo usuário.
+
+Alguns exemplos de comandos enviados:
+````
+45,45
+````
+O motor inferior irá girar 45° para Leste e o motor superior irá rotacionar 45° para cima, resultando em Azimuth: 45°, Altitude: 45°
+````
+90,90
+````
+O motor inferior irá girar 45° novamente para Leste e o motor superior irá rotacionar novamente 45° para cima, resultando em Azimuth: 90°, Altitude: 90°
+````
+0,0
+````
+O motor inferior irá girar -90° para Leste (equivalente à 90° para oeste) e o motor superior irá rotacionar -90° para cima (equivalente à 90° para baixo), resultando em Azimuth: 0°, Altitude: 0° (origem)
+````
+270,0
+````
+O motor inferior irá girar 270° para Leste (equivalente à 360-270 = 90° para oeste) e o motor superior irá rotacionar 0° para cima resultando em Azimuth: -90°, Altitude: 0° 
 
 Entre cada envio das coordenadas, o usuário também pode pressionar o Botão A ou Botão B da BitDogLab e uma das situações a seguir deve ocorrer:
 - Botão A: Alterna o estado do Laser para Ligado/Desligado
-- Botão B: O programa entra no modo de calibração conforme mencionado anteriormente, sendo necessário pressionar novamente o botão B para concluir a calibração. 
-
+- Botão B: O programa entra no modo de calibração, conforme mencionado anteriormente, sendo necessário pressionar novamente o botão B para concluir a calibração. 
 
 Abaixo é apresentado um fluxograma do programa descrito
 
