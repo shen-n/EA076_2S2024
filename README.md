@@ -57,6 +57,7 @@ O programa utilizado neste projeto foi desenvolvido na linguagem de programaçã
 - Sys
 - Ssd1306
 - Framebuf
+  
 A comunicação com o módulo bluethooh foi feita via protocolo UART, e mais especificamente foi utilizada a UART0 da Raspiberry neste projeto. 
 
 O programa inicia com uma função de calibração controlada via Joystick da BitDogLab, de tal forma que, o usuário deverá utilizar movimentos do joystick para cima/baixo ou para a esquerda/direita para controlar os motores superiores e inferiores de tal forma a alinhar o laser na posição horizontal e na direção do polo norte.
@@ -74,21 +75,26 @@ Note que estas coordenadas podem ser do tipo float com precisão de 2 casas deci
 Por fim, o programa calcula o número de micropassos necessários para cada motor de tal forma que, o motor finalize o movimento no ângulo enviado pelo usuário.
 
 Alguns exemplos de comandos enviados na sequência:
+
+Enviando 45,45
 ````
 45,45
 ````
 O motor inferior irá girar 45° para Leste e o motor superior irá rotacionar 45° para cima, resultando em Azimuth: 45°, Altitude: 45°
 
+Enviando 90,90
 ````
 90,90
 ````
 O motor inferior irá girar 45° novamente para Leste e o motor superior irá rotacionar novamente 45° para cima, resultando em Azimuth: 90°, Altitude: 90°
 
+Enviando 0,0
 ````
 0,0
 ````
 O motor inferior irá girar -90° para Leste (equivalente à 90° para oeste) e o motor superior irá rotacionar -90° para cima (equivalente à 90° para baixo), resultando em Azimuth: 0°, Altitude: 0° (origem)
 
+Enviando 270,0
 ````
 270,0
 ````
