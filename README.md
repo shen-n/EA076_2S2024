@@ -104,6 +104,8 @@ Assim, encerra-se indicando possíveis melhorias futuras: (a) melhorar estabilid
 
 [7] “Sistema horizontal de coordenadas,” Wikipedia.org, Jul. 2007. https://pt.wikipedia.org/wiki/Sistema_horizontal_de_coordenadas (accessed Nov. 29, 2024).
 
+[8] “The Internet Stellar Database,” www.stellar-database.com. http://www.stellar-database.com/
+
 ## Apêndice A - sistemas de coordenadas
 
 Para localizar corpos celestes, é muito comum que se utilize o sistema de coordenadas celeste. Nele, usa-se o conceito de Esfera Celeste: uma projeção de todo o céu em uma esfera de raio indeterminado e concêntrica à Terra (como se o céu que vemos fosse uma casca esférica ao redor da Terra). A localização dos corpos se dá através de coordenadas esféricas, as quais dependem do plano fundamental escolhido (plano que divide Esfera Celeste em dois hemisférios) [1]. O Sistema Horizontal, por exemplo, é geralmente mais conhecido (com Azimute/Altitude como coordenadas) e utiliza o horizonte local do observador como plano fundamental [1,7]. O problema é que, como a referência (plano fundamental) depende da posição do observador na Terra, a posição do corpo celeste a ser apontado, por consequência, também depende. Assim, para eliminar essa dependência, é comum que se utilize o Sistema Equatorial, que toma como plano fundamental o Equador Celeste (projeção da Linha do Equador na Esfera Celeste) [1,6]. O Polo Norte e Polo Sul também são projetados na Esfera Celeste, sendo denominados Polo Sul Celeste e Polo Norte Celeste.
