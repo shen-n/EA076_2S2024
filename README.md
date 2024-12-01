@@ -51,7 +51,9 @@ Para integrar os motores e o laser, foi desenvolvida uma estrutura mecânica, co
 
 ### Desenvolvimento do programa 
 
-- **Fluxograma:** 
+- **Fluxograma:**
+
+![Alt text](images/Fluxograma.svg)
 
 ## Descrição Estrutural
 
