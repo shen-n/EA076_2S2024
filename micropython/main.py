@@ -97,6 +97,7 @@ def set_reference():
     azi_angle = 0
     zen_angle = 0
 
+# recalibrates both step motors using BitDogLab joystick
 def recalibrate(dirPin_x, dirPin_y, adc_x, adc_y, joystick_button, botao_b, oled):
     previous_pos_x = None
     previous_pos_y = None
@@ -109,16 +110,20 @@ def recalibrate(dirPin_x, dirPin_y, adc_x, adc_y, joystick_button, botao_b, oled
     
     button_b_pressed = False
 
+    # Waits user calibration
     while True:
         adc_value_x = adc_x.read_u16()
         adc_value_y = adc_y.read_u16()
    
+        # Reads Joystick postion
         current_pos_x = left_or_right(adc_value_x, adc_avg)
         current_pos_y = up_or_down(adc_value_y, adc_avg)
         
-        
+        # Reads Joystick button status
         joystick_button_state = joystick_button.value()
         
+        
+        # Verify if joystick was pressed and released
         if joystick_button_state == 0 and not joystick_button_pressed:
             joystick_button_pressed = True
             micro_adjust = not micro_adjust
@@ -128,6 +133,7 @@ def recalibrate(dirPin_x, dirPin_y, adc_x, adc_y, joystick_button, botao_b, oled
             joystick_button_pressed = False
         
         
+        # If Joystick to the right, then moves the motor
         if current_pos_x == 'right':                  
             if previous_pos_x != 'right':
                 oled.text("DIREITA", 30, 50)
@@ -139,7 +145,9 @@ def recalibrate(dirPin_x, dirPin_y, adc_x, adc_y, joystick_button, botao_b, oled
             step_x()
             if micro_adjust:
                 sleep_ms(50)
-                
+            
+            
+        # If Joystick to the left, then moves the motor
         elif current_pos_x == 'left':            
             if previous_pos_x != 'left':
                 oled.text("ESQUERDA", 30, 50)
@@ -153,6 +161,8 @@ def recalibrate(dirPin_x, dirPin_y, adc_x, adc_y, joystick_button, botao_b, oled
             if micro_adjust:
                 sleep_ms(50)
         
+        
+        # Else, do nothing
         elif current_pos_x == None:
             if previous_pos_x != None:
                 previous_pos_x = None
@@ -161,7 +171,7 @@ def recalibrate(dirPin_x, dirPin_y, adc_x, adc_y, joystick_button, botao_b, oled
                 oled.show()
 
         
-        
+        # If Joystick is up, then moves the motor
         if current_pos_y == 'up':                  
             if previous_pos_y != 'up':
                 oled.text("CIMA", 30, 50)
@@ -174,7 +184,8 @@ def recalibrate(dirPin_x, dirPin_y, adc_x, adc_y, joystick_button, botao_b, oled
             if micro_adjust:
                 sleep_ms(50)
             step_y()
-                
+        
+        # If Joystick is down, then moves the motor
         elif current_pos_y == 'down':            
             if previous_pos_y != 'down':
                 oled.text("BAIXO", 30, 50)
@@ -188,6 +199,8 @@ def recalibrate(dirPin_x, dirPin_y, adc_x, adc_y, joystick_button, botao_b, oled
                 sleep_ms(50)
             step_y()
         
+        
+        # Else, do nothing
         elif current_pos_y == None:
             if previous_pos_y != None:
                 oled.fill(0)
@@ -195,9 +208,11 @@ def recalibrate(dirPin_x, dirPin_y, adc_x, adc_y, joystick_button, botao_b, oled
                 oled.show()
                 previous_pos_y = None
         
+        # Checks is button b was pressed 
         if botao_b.value()==0:
             button_b_pressed = True
         
+        # Checks is button b was pressed and released then left function
         elif button_b_pressed and botao_b.value():
             return 0,0
  
@@ -238,50 +253,58 @@ while True:
     button_b_pressed = False
     button_a_pressed = False
     
+    # Samples data, Button A, Button B from BitDogLab
     while wait:
+        # Checks if button B was pressed
         if botao_b.value() == 0:
             button_b_pressed = True
+        
+        # Checks if button B was already pressed and released
         elif botao_b.value() == 1 and button_b_pressed:
             button_b_pressed = False
+            
+            # enters calibration mode
             zen_angle, azi_angle = recalibrate(dirPin_azi, dirPin_zen, adc_x, adc_y, joystick_button, botao_b, oled)
+           
             oled.fill(0)
             oled.text("ENVIE COORDENADAS", 0,15)
             oled.text("NO FORMATO", 25,25)
             oled.text("Azimuth,Altitude", 0,45)
             oled.show()
         
+        # Checks if button A was pressed
         if button_a.value() == 0:
             button_a_pressed = True
+        
+        # Checks if button A was already pressed and released
         elif button_a.value() == 1 and button_a_pressed:
-            # Led Desligado
+            # Led Off
             if led_state == 0:
                 led_state = 2
                 laserPin.value(0)
             
-            # Led Liga no final do movimento
-            elif led_state == 1:
-                led_state = 2
-                #laserPin.value(0)
-            
-            # Led sempre ligado
+            # Led On
             elif led_state == 2:
                 led_state = 0
                 laserPin.value(1)
             button_a_pressed = False
-           
-        if uart.any():  # Verifica se há dados disponíveis
-            data = uart.read().decode('utf-8').strip()  # Lê os dados, decodifica e remove espaços em branco
+        
+        # Verify if data is avaliable
+        if uart.any():  
+            data = uart.read().decode('utf-8').strip()  # Read and remove white spaces
             try:
-                # Divide os dados recebidos na vírgula
+                # Splits data received by comma
                 values = data.split(',')
-                if len(values) == 2:  # Certifica-se de que há exatamente dois valores
-                    azi_input = float(values[0])  # Converte o primeiro valor para inteiro
-                    zen_input = float(values[1])  # Converte o segundo valor para inteiro
+                if len(values) == 2:  # certify if threre is only two values
+                    azi_input = float(values[0])  # Converts azimuth to float
+                    zen_input = float(values[1])  # Converts alitude to float
                     wait = False
                     print(f"Zenith: {zen_input}, Azimuth: {azi_input}")
             except ValueError:
                 print("Dados recebidos inválidos. Certifique-se de enviar no formato 20,20.")
     
+    # Verify if azimuth is greater than 180, and if so, changes its value to
+    # the corresponding negative angle value
     if azi_input > 180:
         azi_input = (-1)*(360 - azi_input)
 
@@ -347,3 +370,5 @@ while True:
     
     if led_state == 1:
         laserPin.value(1)
+
+    
