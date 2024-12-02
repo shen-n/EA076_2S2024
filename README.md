@@ -59,6 +59,8 @@ O circuito para acionamento do Laser foi desenvolvido com um chaveamento simples
 
 Além disso, a placa também conta com um header J9 de 6 pinos que permite acesso aos GPIOS 08 e 09 além do VCC e GND. 
 
+A alimentação da placa deve ser conectada com uma bateria 3S (11.1 V) via conector XT30. Contudo, a placa também pode ser alimentada com uma tensão de até 12V, que seria a tensão nominal do motor de passo escolhido no projeto.
+
 
 
 ### Desenvolvimento do programa 
